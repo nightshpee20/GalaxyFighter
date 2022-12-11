@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:onClick="toggleSound"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -37,6 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
+        android:onClick="start"
         android:text="Start"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

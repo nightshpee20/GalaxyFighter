@@ -3,14 +3,16 @@ package fmi.android.galaxyfighter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+    static MediaPlayer player;
+
     ImageView muteImageView;
-    MediaPlayer player;
     boolean playSound = false;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         muteImageView = findViewById(R.id.muteImageView);
-        player = MediaPlayer.create(this, R.raw.homescreen);
-        player.setLooping(true);
-        player.start();
+        startPlayer(R.raw.homescreen);
     }
 
     public void toggleSound(View view) {
@@ -35,8 +35,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void start(View view) {
+        if (player.isPlaying()) {
+            player.stop();
+            startPlayer(R.raw.battle);
+        }
+        startActivity(new Intent(MainActivity.this, GameActivity.class));
+    }
+
     public void exit(View view) {
         finish();
         System.exit(0);
+    }
+
+    public void startPlayer(int music) {
+        player = MediaPlayer.create(this, music);
+        player.setLooping(true);
+        player.start();
     }
 }

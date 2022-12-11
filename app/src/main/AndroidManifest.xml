@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GalaxyFighter">
         <activity
+            android:name=".GameActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
